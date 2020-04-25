@@ -9,21 +9,20 @@
              xmlns:local="clr-namespace:xamarinApp"
              x:Class="xamarinApp.MainPage">
 
-    <!--アンドロイド、iPhoneの対応するための基本の余白設定-->
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS">0,20,0,0</On>
-        </OnPlatform>
-    </ContentPage.Padding>
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel/>
+    </ContentPage.BindingContext>
+    
     
     <!--データバインディングの基本、コントローラー同士のバインディング-->
     <StackLayout VerticalOptions="Center">
         <Slider x:Name="slider"
                 Minimum="0"
                 Maximum="100"
-                HorizontalOptions="Fill"/>
+                HorizontalOptions="Fill"
+                Value="{Binding SliderValue}"/>
 
-        <Entry Text="{Binding Value, Source={x:Reference slider}}"
+        <Label Text="{Binding LabelValue}"
                HorizontalOptions="Fill"/>
     </StackLayout>
 
